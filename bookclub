@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Landing Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0c1e54 0%, #1e3a8a 50%, #172554 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            letter-spacing: -0.5px;
+            opacity: 0;
+            animation: fadeInDown 0.8s ease forwards;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 4.5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        .subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #1e3a8a;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.8s forwards;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .background-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 5s;
+        }
+
+        .shape:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            bottom: 15%;
+            left: 20%;
+            animation-delay: 10s;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(30px, -30px) scale(1.1);
+            }
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <div class="container">
+        <div class="logo">Black and Christian in a Troubled World Book Club</div>
+        
+        <h1>Theology, Truth Telling, and the Fight for Justice</h1>
+        
+        <p class="subtitle">
+            Come join us and explore the works of classic and contemporary Black Christian Theologians and scholars who have examined how faith can confront injustice and create a path towards healing.
+        </p>
+
+        <div class="cta-buttons">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfna4I-MnxSqG_mWWJuAihYFYiPtHIVWYlWYZ0JOTgdzst08g/viewform?usp=header" target="_blank" class="btn btn-primary">Join the Book Club</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSc2HZaB96DCxmKuDWgyyfdHm8Thl3b9-q1_ZhFF0KoNjuN8kg/viewform?usp=header" target="_blank" class="btn btn-secondary">Learn More</a>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">📚</div>
+                <h3>Deep Engagement</h3>
+                <p>Explore profound theological works and their relevance today as we navigate complex moral challenges.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💬</div>
+                <h3>Meaningful Community</h3>
+                <p>Connect with others committed to faith and justice in authentic dialogue and shared learning.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon" style="color: #654321;">✊</div>
+                <h3>Faith in Action</h3>
+                <p>Transform understanding into real-world impact through the revolutionary love of Christ's ministry.</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 4rem; max-width: 800px; margin-left: auto; margin-right: auto; text-align: left; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 2.5rem; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.2); opacity: 0; animation: fadeInUp 0.8s ease 1s forwards;">
+            <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center;">Why This Book Club Now?</h2>
+            <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.8; margin-bottom: 1.2rem;">
+                Have you been feeling unsettled because of our current political atmosphere?
+            </p>
+            <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.8; margin-bottom: 1.2rem;">
+                We are living in troubled times—times that demand more than soundbites, more than silence, more than simplistic answers to complex situations.
+            </p>
+            <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.8; margin-bottom: 1.2rem;">
+                "My name is Jennifer Howard, and for 39 years I've been a Bible teacher, with 31 of those years spent as a public school teacher."
+            </p>
+            <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.8; margin-bottom: 1.2rem;">
+                I've spent my life sitting with Scripture, with students, and with communities—wrestling with what it really means to follow Jesus in the real world.
+            </p>
+            <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.8; margin-bottom: 1.2rem;">
+                That's why I created Black and Christian in a Troubled World Book Club.
+            </p>
+            <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.8; margin-bottom: 1.2rem;">
+                This is not a surface-level book club.
+            </p>
+            <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.8; margin-bottom: 1.2rem;">
+                It's a study community—a space for Black Christians and thoughtful allies who refuse to separate faith from history.
+            </p>
+            <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.8; margin-bottom: 1.2rem;">
+                Here, we read courageous books, ask honest questions, and engage in critical thinking as we practice truth-telling—because truth is how the Beloved Community is built.
+            </p>
+            <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.8; margin-bottom: 1.2rem;">
+                If you've ever felt the tension between what you were taught in church and what you see happening in the world…
+            </p>
+            <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.8; margin-bottom: 1.2rem;">
+                If you love Jesus but are weary of a faith that ignores suffering, racism, and injustice…
+            </p>
+            <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.8; margin-bottom: 1.2rem;">
+                If you're hungry for Scripture and conversation that stretches your mind and strengthens your spirit—
+            </p>
+            <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.8; margin-bottom: 1.2rem;">
+                This space is for you.
+            </p>
+            <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.8; margin-bottom: 1.2rem;">
+                We gather to read, reflect, pray, and think—anchored in Christ but rooted in history.
+            </p>
+            <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.8; margin-bottom: 1.2rem;">
+                So if you're ready for faithful and courageous conversation, join us.
+            </p>
+            <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.8;">
+                Black and Christian in a Troubled World Book Club is for you…because faith was never meant to be silent.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
